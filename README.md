@@ -1,2 +1,2 @@
 # cruise-control
-Mileage tracking
+Mileage tracking 1.0
