@@ -1,25 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Set default date to today
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById("date").value = today;
+  const dateInput = document.getElementById("date");
+  const gallonsInput = document.getElementById("gallons");
+  const priceInput = document.getElementById("price");
+  const costPreview = document.getElementById("costPreview");
+  const mpgPreview = document.getElementById("mpgPreview");
+  const successMessage = document.getElementById("successMessage");
+
+  function setTodayDate() {
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.value = today;
+  }
+
+  setTodayDate();
+
+  function updatePreviews() {
+
+    const gallons = parseFloat(gallonsInput.value);
+    const price = parseFloat(priceInput.value);
+
+    if (!isNaN(gallons) && !isNaN(price)) {
+
+      const totalCost = gallons * price;
+
+      costPreview.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+
+    } else {
+
+      costPreview.textContent = "Total Cost: --";
+
+    }
+
+    mpgPreview.textContent = "MPG: calculated after save";
+
+  }
+
+  gallonsInput.addEventListener("input", updatePreviews);
+  priceInput.addEventListener("input", updatePreviews);
 
   document.getElementById("fuelForm").addEventListener("submit", function(e){
 
     e.preventDefault();
 
     const entry = {
-        car: document.getElementById("car").value,
-        date: document.getElementById("date").value,
-        mileage: document.getElementById("mileage").value,
-        gallons: document.getElementById("gallons").value,
-        price: document.getElementById("price").value,
-        carMPG: document.getElementById("carMPG").value
+      car: document.getElementById("car").value,
+      date: dateInput.value,
+      mileage: document.getElementById("mileage").value,
+      gallons: gallonsInput.value,
+      price: priceInput.value,
+      carMPG: document.getElementById("carMPG").value
     }
 
-    console.log(entry)
+    console.log(entry);
 
-    alert("Fuel log saved (test mode)!")
+    successMessage.style.display = "block";
+
+    setTimeout(function(){
+      successMessage.style.display = "none";
+    }, 2500);
+
+    document.getElementById("fuelForm").reset();
+
+    setTodayDate();
+
+    costPreview.textContent = "Total Cost: --";
+    mpgPreview.textContent = "MPG: --";
 
   })
 
