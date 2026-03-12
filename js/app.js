@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log(entry)
 
-    alert("Fuel log saved (test mode)")
+    alert("Fuel log saved (test mode)!")
 
   })
 
