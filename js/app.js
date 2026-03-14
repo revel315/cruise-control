@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const priceInput = document.getElementById("price");
   const costPreview = document.getElementById("costPreview");
   const mpgPreview = document.getElementById("mpgPreview");
-  const successMessage = document.getElementById("successMessage");document.addEventListener("DOMContentLoaded", function () {
+  const successMessage = document.getElementById("successMessage");
   const debug = document.getElementById("debugMessage");
   debug.textContent = "Supabase check...";
 
