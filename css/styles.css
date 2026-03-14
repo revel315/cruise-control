@@ -5,8 +5,8 @@
 }
 
 body {
-  background-color: hsl(231, 86%, 32%);
-  color: white;
+  background-color: hsl(240, 2%, 53%);
+  color: rgb(41, 16, 16);
   font-family: sans-serif;
   line-height: 1.6;
   max-width: 500px;
