@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("debugMessage").textContent = "app.js loaded";
+  
   const form = document.getElementById("fuelForm");
   const dateInput = document.getElementById("date");
   const gallonsInput = document.getElementById("gallons");
