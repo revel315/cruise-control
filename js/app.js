@@ -1,35 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("debugMessage").textContent = "app.js loaded";
-  
+
   const form = document.getElementById("fuelForm");
   const dateInput = document.getElementById("date");
   const gallonsInput = document.getElementById("gallons");
   const priceInput = document.getElementById("price");
   const costPreview = document.getElementById("costPreview");
   const mpgPreview = document.getElementById("mpgPreview");
-  const successMessage = document.getElementById("successMessage");
+  const successMessage = document.getElementById("successMessage");document.addEventListener("DOMContentLoaded", function () {
+  const debug = document.getElementById("debugMessage");
 
-  if (typeof supabase === "undefined") {
-  alert("Supabase is NOT connected");
-} else {
-  alert("Supabase is connected");
-}
-
-  async function testSupabaseConnection() {
-  const { data, error } = await supabase
-    .from("cars")
-    .select("*")
-    .limit(1);
-
-  if (error) {
-    alert("Supabase read failed: " + error.message);
+  if (window.supabase) {
+    debug.textContent = "Supabase CDN loaded";
   } else {
-    alert("Supabase read worked");
-    console.log(data);
+    debug.textContent = "Supabase CDN NOT loaded";
   }
-}
-
-testSupabaseConnection();
+});
 
   if (!form || !dateInput || !gallonsInput || !priceInput || !costPreview || !mpgPreview || !successMessage) {
     alert("One or more HTML elements are missing. Check your element IDs.");
