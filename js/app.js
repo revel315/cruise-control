@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
+  const form = document.getElementById("fuelForm");
   const dateInput = document.getElementById("date");
   const gallonsInput = document.getElementById("gallons");
   const priceInput = document.getElementById("price");
@@ -7,42 +7,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");
 
-  document.getElementById("successMessage").textContent =
-"Supabase connected"
+  if (!form || !dateInput || !gallonsInput || !priceInput || !costPreview || !mpgPreview || !successMessage) {
+    alert("One or more HTML elements are missing. Check your element IDs.");
+    return;
+  }
 
   function setTodayDate() {
     const today = new Date().toISOString().split("T")[0];
     dateInput.value = today;
   }
 
-  setTodayDate();
-
   function updatePreviews() {
-
     const gallons = parseFloat(gallonsInput.value);
     const price = parseFloat(priceInput.value);
 
     if (!isNaN(gallons) && !isNaN(price)) {
-
       const totalCost = gallons * price;
-
       costPreview.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
-
     } else {
-
       costPreview.textContent = "Total Cost: --";
-
     }
 
     mpgPreview.textContent = "MPG: calculated after save";
-
   }
+
+  setTodayDate();
 
   gallonsInput.addEventListener("input", updatePreviews);
   priceInput.addEventListener("input", updatePreviews);
 
-  document.getElementById("fuelForm").addEventListener("submit", function(e){
-
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const entry = {
@@ -52,23 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
       gallons: gallonsInput.value,
       price: priceInput.value,
       carMPG: document.getElementById("carMPG").value
-    }
+    };
 
     console.log(entry);
 
     successMessage.style.display = "block";
 
-    setTimeout(function(){
+    setTimeout(function () {
       successMessage.style.display = "none";
     }, 2500);
 
-    document.getElementById("fuelForm").reset();
-
+    form.reset();
     setTodayDate();
 
     costPreview.textContent = "Total Cost: --";
     mpgPreview.textContent = "MPG: --";
-
-  })
-
-})
+  });
+});
