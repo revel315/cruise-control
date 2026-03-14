@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");document.addEventListener("DOMContentLoaded", function () {
   const debug = document.getElementById("debugMessage");
+  debug.texContent = "Supabase check...";
 
   if (window.supabase) {
     debug.textContent = "Supabase CDN loaded";
