@@ -10,12 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const debug = document.getElementById("debugMessage");
   debug.texContent = "Supabase check...";
 
-  if (window.supabase) {
-    debug.textContent = "Supabase CDN loaded";
-  } else {
-    debug.textContent = "Supabase CDN NOT loaded";
-  }
-});
 
   if (!form || !dateInput || !gallonsInput || !priceInput || !costPreview || !mpgPreview || !successMessage) {
     alert("One or more HTML elements are missing. Check your element IDs.");
