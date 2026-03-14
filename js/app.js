@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");document.addEventListener("DOMContentLoaded", function () {
   const debug = document.getElementById("debugMessage");
-  debug.texContent = "Supabase check...";
-
+  debug.textContent = "Supabase check...";
 
   if (!form || !dateInput || !gallonsInput || !priceInput || !costPreview || !mpgPreview || !successMessage) {
     alert("One or more HTML elements are missing. Check your element IDs.");
