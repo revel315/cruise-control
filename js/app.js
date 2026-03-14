@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");
 
+  if (typeof supabase === "undefined") {
+  alert("Supabase is NOT connected");
+} else {
+  alert("Supabase is connected");
+}
+
   async function testSupabaseConnection() {
   const { data, error } = await supabase
     .from("cars")
