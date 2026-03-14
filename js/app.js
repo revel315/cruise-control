@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");
 
-  console.log("Supabase connected:", supabase)
+  document.getElementById("successMessage").textContent =
+"Supabase connected"
 
   function setTodayDate() {
     const today = new Date().toISOString().split("T")[0];
