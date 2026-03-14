@@ -7,6 +7,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const mpgPreview = document.getElementById("mpgPreview");
   const successMessage = document.getElementById("successMessage");
 
+  async function testSupabaseConnection() {
+  const { data, error } = await supabase
+    .from("cars")
+    .select("*")
+    .limit(1);
+
+  if (error) {
+    alert("Supabase read failed: " + error.message);
+  } else {
+    alert("Supabase read worked");
+    console.log(data);
+  }
+}
+
+testSupabaseConnection();
+
   if (!form || !dateInput || !gallonsInput || !priceInput || !costPreview || !mpgPreview || !successMessage) {
     alert("One or more HTML elements are missing. Check your element IDs.");
     return;
